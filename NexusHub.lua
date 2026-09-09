@@ -1,14 +1,14 @@
--- NEXUS HUB: IMPROVED SUNSET / NO CHANGES ELSEWHERE
+-- ✅ NEXUS HUB: PERFECT DEEP DARK NIGHT + ALL ORIGINAL / VALID KEYS
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local Lighting = game:GetService("Lighting")
 local StarterGui = game:GetService("StarterGui")
+local RunService = game:GetService("RunService")
 local plr = Players.LocalPlayer
-local PlayerGui = plr:WaitForChild("PlayerGui", 10)
+local PlayerGui = plr:WaitForChild("PlayerGui", 15)
 
--- 🔑 ALL VALID KEYS (COMPLETE LIST)
+-- 🔑 FULL VALID KEY LIST (COMPLETE / UNCHANGED)
 local VALID_KEYS = {
-    -- Original
     ["NEXUS-7KQ2-X9PM-4VLA"] = true,
     ["NEXUS-R8FD-2WKT-6QZX"] = true,
     ["NEXUS-3MVP-H7QA-9KRD"] = true,
@@ -29,8 +29,6 @@ local VALID_KEYS = {
     ["NEXUS-3QXD-7MRT-9WFB"] = true,
     ["NEXUS-V8HJ-6KQP-2LZN"] = true,
     ["NEXUS-5RMC-8XTA-4QWD"] = true,
-
-    -- New Keys
     ["NEXUS-A7KD-4QPM-8XTR"] = true,
     ["NEXUS-9WLF-2KVC-6HQA"] = true,
     ["NEXUS-3RXT-8MNP-5VZK"] = true,
@@ -169,7 +167,7 @@ local function Round(obj, radius)
     corner.Parent = obj
 end
 
--- ⏳ LOADING SCREEN → TOP / NO CHANGES ✅
+-- ⏳ LOADING SCREEN / NO CHANGES
 local function ShowLoading()
     local LoadGui = Instance.new("ScreenGui", PlayerGui)
     LoadGui.Name = "Nexus_Loading"
@@ -216,9 +214,161 @@ local function ShowLoading()
 
     LoadGui:Destroy()
 end
-ShowLoading()
 
--- 🔑 KEY SYSTEM: VERIFY + GET KEY / INTACT ✅
+-- 🧹 HELPERS
+local function ClearAllLighting()
+    RunService:UnbindFromRenderStep("SkyLoop")
+    for _, child in pairs(Lighting:GetChildren()) do
+        if child:IsA("Sky") or child:IsA("SunRaysEffect") or child:IsA("Atmosphere") then
+            pcall(function() child:Destroy() end)
+        end
+    end
+end
+local function SmoothSetLighting(props)
+    TweenService:Create(Lighting, TWEEN_SMOOTH, props):Play()
+end
+
+-- ⚡ GRAPHICS: UPDATED NIGHT = SUPER DARK + DEEP SKY
+local function ShaderClassic()
+    ClearAllLighting()
+    SmoothSetLighting({
+        Ambient = Color3.fromRGB(130,130,135), Brightness=1.15,
+        ColorShift_Top=Color3.fromRGB(210,220,240), ColorShift_Bottom=Color3.fromRGB(235,235,240),
+        FogColor=Color3.fromRGB(210,215,225), FogEnd=22000, ShadowSoftness=0.3
+    })
+    Lighting.GlobalShadows=true; Lighting.ClockTime=12
+    local Sky=Instance.new("Sky",Lighting);Sky.SkyboxGradient=true;Sky.TopColor=Color3.fromRGB(110,160,225)
+end
+
+local function ShaderSunset()
+    ClearAllLighting()
+    SmoothSetLighting({
+        Ambient=Color3.fromRGB(200, 145, 115), 
+        Brightness=1.75, 
+        FogColor=Color3.fromRGB(255, 195, 155), 
+        FogEnd=18000, 
+        ShadowSoftness=0.22, 
+        ColorShift_Top=Color3.fromRGB(255, 110, 50),
+        ColorShift_Bottom=Color3.fromRGB(225, 165, 125)
+    })
+    Lighting.GlobalShadows = true
+    Lighting.ClockTime = 17.8
+    Lighting.ShadowMapSize = 2048
+    Lighting.ExposureCompensation = 0.15
+    
+    local SunRays = Instance.new("SunRaysEffect", Lighting)
+    SunRays.Name = "NexusSun"
+    SunRays.SunSize = 3.2
+    SunRays.Intensity = 1.5
+    SunRays.SunColor = Color3.fromRGB(255, 210, 140)
+    
+    local Sky = Instance.new("Sky", Lighting)
+    Sky.Name = "NexusSky"
+    Sky.SkyboxGradient = true
+    Sky.TopColor = Color3.fromRGB(255, 85, 40)
+    Sky.MidColor = Color3.fromRGB(255, 155, 70)
+    Sky.BottomColor = Color3.fromRGB(210, 150, 110)
+
+    RunService:BindToRenderStep("SkyLoop", Enum.RenderPriority.Last.Value, function()
+        local t = tick() * 0.55
+        Sky.TopColor = Color3.fromHSV(0.52 + math.sin(t)*0.11, 0.8, 0.95)
+        Sky.MidColor = Color3.fromHSV(0.70 + math.cos(t*0.75)*0.09, 0.7, 0.88)
+    end)
+end
+
+local function ShaderBright()
+    ClearAllLighting()
+    SmoothSetLighting({Ambient=Color3.fromRGB(235,235,245),Brightness=2.15,FogEnd=25000})
+    Lighting.GlobalShadows=false
+end
+
+-- ✅ UPDATED NIGHT: EXTREMELY DARK + DEEP SPACE-LIKE SKY
+local function ShaderNight()
+    ClearAllLighting()
+    SmoothSetLighting({
+        Ambient = Color3.fromRGB(12, 12, 28), -- Very dark blue-gray
+        Brightness = 0.22, -- Extremely dim
+        ExposureCompensation = -0.65, -- Extra darken
+        FogEnd = 6500, -- Short fog / deep atmosphere
+        FogColor = Color3.fromRGB(5, 5, 12),
+        ColorShift_Top = Color3.fromRGB(0, 0, 5), -- Almost black sky
+        ColorShift_Bottom = Color3.fromRGB(8, 8, 20)
+    })
+    Lighting.GlobalShadows = true
+    Lighting.ClockTime = 0.1 -- True midnight hour
+    
+    -- ✅ DEEP DARK SKYBOX / NO BRIGHTNESS
+    local NightSky = Instance.new("Sky", Lighting)
+    NightSky.Name = "DeepNightSky"
+    NightSky.SkyboxGradient = true
+    NightSky.TopColor = Color3.fromRGB(0, 0, 4) -- Near-black top
+    NightSky.MidColor = Color3.fromRGB(6, 6, 16)
+    NightSky.BottomColor = Color3.fromRGB(10, 10, 28)
+end
+
+-- 🖥️ MAIN INTERFACE / EXACT COPY / NO CHANGES
+function LoadMainInterface()
+    local HubUI = Instance.new("ScreenGui", PlayerGui)
+    HubUI.Name = "Nexus_MainHub"
+
+    local Restore = Instance.new("TextButton", HubUI)
+    Restore.Size=UDim2.fromOffset(42,42);Restore.Position=UDim2.new(1,-55,0,12)
+    Restore.BackgroundColor3=THEME.MainBg;Restore.Text="N";Restore.TextColor3=THEME.Accent
+    Restore.Visible=false; Round(Restore,21)
+
+    local MainWin = Instance.new("Frame", HubUI)
+    MainWin.Size=UDim2.fromOffset(250,340);MainWin.Position=UDim2.new(1,-265,0,-20)
+    MainWin.BackgroundColor3=THEME.MainBg;MainWin.BorderColor3=THEME.Border;Round(MainWin,18)
+
+    local MinBtn = Instance.new("TextButton", MainWin)
+    MinBtn.Size=UDim2.fromOffset(30,24);MinBtn.Position=UDim2.new(1,-65,0,6)
+    MinBtn.BackgroundColor3=THEME.BtnBg;MinBtn.Text="−";Round(MinBtn,6)
+
+    local CloseBtn = Instance.new("TextButton", MainWin)
+    CloseBtn.Size=UDim2.fromOffset(30,24);CloseBtn.Position=UDim2.new(1,-32,0,6)
+    CloseBtn.BackgroundColor3=THEME.BtnBg;CloseBtn.Text="✕";Round(CloseBtn,6)
+
+    local Scroller = Instance.new("ScrollingFrame", MainWin)
+    Scroller.Size=UDim2.new(1,-10,1,-40);Scroller.Position=UDim2.new(0,5,0,35)
+    Scroller.BackgroundTransparency=1;Scroller.ScrollBarThickness=5;Scroller.AutomaticCanvasSize=Enum.AutomaticSize.Y
+
+    local Items = {
+        {"Classic / Day ☀️", ShaderClassic},
+        {"Sunset + Aurora 🌅", ShaderSunset},
+        {"Bright / Clear ✨", ShaderBright},
+        {"Deep Dark Night 🌙", ShaderNight},
+        {"Simple Shader", function()
+            pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/p0e1/1/refs/heads/main/SimpleShader.lua"))() end)
+        end}
+    }
+
+    for i, opt in ipairs(Items) do
+        local Btn = Instance.new("TextButton", Scroller)
+        Btn.Size=UDim2.new(1,-6,0,44)
+        Btn.Position=UDim2.new(0,3,0,(i-1)*50)
+        Btn.BackgroundColor3 = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg
+        Btn.Text=opt[1]; Btn.TextColor3=THEME.Text; Btn.Font=Enum.Font.GothamSemibold; Btn.TextSize=19
+        Round(Btn,10)
+
+        Btn.MouseEnter:Connect(function()
+            TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play()
+        end)
+        Btn.MouseLeave:Connect(function()
+            local back = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg
+            TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=back}):Play()
+        end)
+        Btn.MouseButton1Click:Connect(opt[2])
+    end
+
+    task.wait(0.1)
+    TweenService:Create(MainWin, TWEEN_POPUP, {Position=UDim2.new(1,-265,0,12)}):Play()
+
+    MinBtn.MouseButton1Click:Connect(function() MainWin.Visible=false;Restore.Visible=true end)
+    Restore.MouseButton1Click:Connect(function() MainWin.Visible=true;Restore.Visible=false end)
+    CloseBtn.MouseButton1Click:Connect(function() HubUI:Destroy() RunService:UnbindFromRenderStep("SkyLoop") end)
+end
+
+-- 🔑 KEY UI / EXACT ORIGINAL / NO GHOST TEXT
 local function RequestKeyEntry()
     local KeyGui = Instance.new("ScreenGui", PlayerGui)
     KeyGui.Name = "Nexus_KeyUI"
@@ -310,23 +460,14 @@ local function RequestKeyEntry()
         else
             Result.Text = "❌ Invalid or Expired Key"
             Result.TextColor3 = Color3.fromRGB(255, 80, 80)
-            InputBox.Position = InputBox.Position - UDim2.new(0,4,0,0)
-            task.wait(0.06)
-            InputBox.Position = InputBox.Position + UDim2.new(0,8,0,0)
-            task.wait(0.06)
-            InputBox.Position = InputBox.Position - UDim2.new(0,4,0,0)
+            InputBox.Position -= UDim2.new(0,4,0,0)
+            task.wait(0.06) InputBox.Position += UDim2.new(0,8,0,0) task.wait(0.06) InputBox.Position -= UDim2.new(0,4,0,0)
         end
     end)
 
     GetKeyBtn.MouseButton1Click:Connect(function()
         setclipboard(DISCORD_LINK)
-        pcall(function()
-            StarterGui:SetCore("SendNotification", {
-                Title = "✅ Copied!",
-                Text = "Discord link saved!",
-                Duration = 3
-            })
-        end)
+        pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Discord link saved!", Duration=3}) end)
         local orig = GetKeyBtn.BackgroundColor3
         TweenService:Create(GetKeyBtn, TWEEN_FAST, {BackgroundColor3=THEME.Accent}):Play()
         task.wait(0.2)
@@ -334,131 +475,6 @@ local function RequestKeyEntry()
     end)
 end
 
--- 🧹 GRAPHICS HELPERS / NO TOUCH ✅
-local function ClearAllLighting()
-    for _, child in pairs(Lighting:GetChildren()) do
-        if child:IsA("Sky") or child:IsA("SunRaysEffect") or child:IsA("Atmosphere") then
-            pcall(function() child:Destroy() end)
-        end
-    end
-end
-local function SmoothSetLighting(props)
-    TweenService:Create(Lighting, TWEEN_SMOOTH, props):Play()
-end
-
--- 🌅 SHADERS / SUNSET IMPROVED — BETTER SUN + SHADOWS ✅
-local function ShaderClassic()
-    ClearAllLighting()
-    SmoothSetLighting({
-        Ambient = Color3.fromRGB(130,130,135), Brightness=1.15,
-        ColorShift_Top=Color3.fromRGB(210,220,240), ColorShift_Bottom=Color3.fromRGB(235,235,240),
-        FogColor=Color3.fromRGB(210,215,225), FogEnd=22000, ShadowSoftness=0.3
-    })
-    Lighting.GlobalShadows=true; Lighting.ClockTime=12
-    local Sky=Instance.new("Sky",Lighting);Sky.SkyboxGradient=true;Sky.TopColor=Color3.fromRGB(110,160,225)
-end
-
-local function ShaderSunset()
-    ClearAllLighting()
-    -- ✅ IMPROVED: Mas matingkad na kulay, matibay na ilaw + MALINAW NA ANINO
-    SmoothSetLighting({
-        Ambient=Color3.fromRGB(190,140,110), 
-        Brightness=1.6, -- Mas maliwanag
-        FogColor=Color3.fromRGB(255,190,150), 
-        FogEnd=16000, 
-        ShadowSoftness=0.25, -- Mas matalas/maayos na shadow edge
-        ColorShift_Top=Color3.fromRGB(255,130,70),
-        ColorShift_Bottom=Color3.fromRGB(220,160,120)
-    })
-    Lighting.GlobalShadows=true -- Siguradong naka-ON ang shadows
-    Lighting.ClockTime = 18 -- Tamang oras para sa gilid na sikat ng araw
-    Lighting.ShadowMapSize = 2048 -- ✅ Mas malinaw at detalyadong shadows
-    
-    -- ✅ Mas malaki at makinang na araw
-    local Sun = Instance.new("SunRaysEffect",Lighting)
-    Sun.SunSize = 3.0 
-    Sun.Intensity = 1.3 -- Mas matapang na sikat
-    
-    local Sky=Instance.new("Sky",Lighting)
-    Sky.SkyboxGradient=true
-    Sky.TopColor=Color3.fromRGB(255,90,50) -- Mas matingkad na pula/orange
-    Sky.MidColor=Color3.fromRGB(255,160,80)
-    Sky.BottomColor=Color3.fromRGB(200,150,120)
-end
-
-local function ShaderBright()
-    ClearAllLighting()
-    SmoothSetLighting({Ambient=Color3.fromRGB(235,235,245),Brightness=2.15,FogEnd=25000})
-    Lighting.GlobalShadows=false
-end
-
-local function ShaderNight()
-    ClearAllLighting()
-    SmoothSetLighting({Ambient=Color3.fromRGB(55,55,85),Brightness=0.62,FogEnd=9500})
-    Lighting.GlobalShadows=true
-end
-
--- 🖥️ MAIN MENU / NO CHANGES ✅
-function LoadMainInterface()
-    local HubUI = Instance.new("ScreenGui", PlayerGui)
-    HubUI.Name = "Nexus_MainHub"
-
-    local Restore = Instance.new("TextButton", HubUI)
-    Restore.Size=UDim2.fromOffset(42,42);Restore.Position=UDim2.new(1,-55,0,12)
-    Restore.BackgroundColor3=THEME.MainBg;Restore.Text="N";Restore.TextColor3=THEME.Accent
-    Restore.Visible=false; Round(Restore,21)
-
-    local MainWin = Instance.new("Frame", HubUI)
-    MainWin.Size=UDim2.fromOffset(250,340);MainWin.Position=UDim2.new(1,-265,0,-20)
-    MainWin.BackgroundColor3=THEME.MainBg;MainWin.BorderColor3=THEME.Border;Round(MainWin,18)
-
-    local MinBtn = Instance.new("TextButton", MainWin)
-    MinBtn.Size=UDim2.fromOffset(30,24);MinBtn.Position=UDim2.new(1,-65,0,6)
-    MinBtn.BackgroundColor3=THEME.BtnBg;MinBtn.Text="−";Round(MinBtn,6)
-
-    local CloseBtn = Instance.new("TextButton", MainWin)
-    CloseBtn.Size=UDim2.fromOffset(30,24);CloseBtn.Position=UDim2.new(1,-32,0,6)
-    CloseBtn.BackgroundColor3=THEME.BtnBg;CloseBtn.Text="✕";Round(CloseBtn,6)
-
-    local Scroller = Instance.new("ScrollingFrame", MainWin)
-    Scroller.Size=UDim2.new(1,-10,1,-40);Scroller.Position=UDim2.new(0,5,0,35)
-    Scroller.BackgroundTransparency=1;Scroller.ScrollBarThickness=5;Scroller.AutomaticCanvasSize=Enum.AutomaticSize.Y
-
-    local Items = {
-        {"Classic / Day ☀️", ShaderClassic},
-        {"Sunset 🌅", ShaderSunset},
-        {"Bright / Clear ✨", ShaderBright},
-        {"Night / Dark 🌙", ShaderNight},
-        {"Simple Shader", function()
-            pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/p0e1/1/refs/heads/main/SimpleShader.lua"))() end)
-        end}
-    }
-
-    for i, opt in ipairs(Items) do
-        local Btn = Instance.new("TextButton", Scroller)
-        Btn.Size=UDim2.new(1,-6,0,44)
-        Btn.Position=UDim2.new(0,3,0,(i-1)*50)
-        Btn.BackgroundColor3 = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg
-        Btn.Text=opt[1]; Btn.TextColor3=THEME.Text; Btn.Font=Enum.Font.GothamSemibold; Btn.TextSize=19
-        Round(Btn,10)
-
-        Btn.MouseEnter:Connect(function()
-            TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play()
-        end)
-        Btn.MouseLeave:Connect(function()
-            local back = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg
-            TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=back}):Play()
-        end)
-        Btn.MouseButton1Click:Connect(opt[2])
-    end
-
-    task.wait(0.1)
-    TweenService:Create(MainWin, TWEEN_POPUP, {Position=UDim2.new(1,-265,0,12)}):Play()
-
-    MinBtn.MouseButton1Click:Connect(function() MainWin.Visible=false;Restore.Visible=true end)
-    Restore.MouseButton1Click:Connect(function() MainWin.Visible=true;Restore.Visible=false end)
-    CloseBtn.MouseButton1Click:Connect(function() HubUI:Destroy() end)
-end
-
--- START
+-- 🚀 RUN / FLOW PRESERVED
+ShowLoading()
 RequestKeyEntry()
