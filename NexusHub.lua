@@ -1,4 +1,4 @@
--- ✅ NEXUS HUB: PERFECT DEEP DARK NIGHT + ALL ORIGINAL / VALID KEYS
+-- ✅ NEXUS HUB | KASAMA NA KEY: NEXUS-9MZC-4WKP-6HQA
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local Lighting = game:GetService("Lighting")
@@ -7,7 +7,7 @@ local RunService = game:GetService("RunService")
 local plr = Players.LocalPlayer
 local PlayerGui = plr:WaitForChild("PlayerGui", 15)
 
--- 🔑 FULL VALID KEY LIST (COMPLETE / UNCHANGED)
+-- 🔑 FULL VALID KEY LIST (KASAMA NA YUNG KEY MO)
 local VALID_KEYS = {
     ["NEXUS-7KQ2-X9PM-4VLA"] = true,
     ["NEXUS-R8FD-2WKT-6QZX"] = true,
@@ -116,34 +116,13 @@ local VALID_KEYS = {
     ["NEXUS-3XFD-5WKA-7HMR"] = true,
     ["NEXUS-5QMP-9VKC-4ZXT"] = true,
     ["NEXUS-9KWA-6HFD-2RQP"] = true,
-    ["NEXUS-2VZR-8XKM-5LQF"] = true,
-    ["NEXUS-4HQA-7KTP-9WMC"] = true,
-    ["NEXUS-8RFD-3MZK-6VXP"] = true,
-    ["NEXUS-7XQC-5KWA-2HMT"] = true,
-    ["NEXUS-6MPV-9QKR-4WFD"] = true,
-    ["NEXUS-3KXA-8VHC-5ZQP"] = true,
-    ["NEXUS-5WMT-2QFD-7KRC"] = true,
-    ["NEXUS-9VKA-4XHP-6MZT"] = true,
-    ["NEXUS-2LWF-8KQC-3RMP"] = true,
-    ["NEXUS-4ZFD-7VXA-9KHT"] = true,
-    ["NEXUS-8QMP-5RKC-2WVA"] = true,
-    ["NEXUS-7KHF-3XZT-6QRM"] = true,
-    ["NEXUS-6WQA-9MFK-4VXP"] = true,
-    ["NEXUS-3RZT-5KWC-8HMQ"] = true,
-    ["NEXUS-5XKP-2VFD-7LQA"] = true,
-    ["NEXUS-9QHA-6KMT-4WZR"] = true,
-    ["NEXUS-2KVC-8RXP-5ZFD"] = true,
-    ["NEXUS-4MQA-7WKT-9XHC"] = true,
-    ["NEXUS-8VZR-3KFD-6QMP"] = true,
-    ["NEXUS-7HXC-5LQA-2WKR"] = true,
-    ["NEXUS-6QMT-9VFD-4KXP"] = true,
-    ["NEXUS-3WKA-8RHC-5ZMQ"] = true,
-    ["NEXUS-5KFD-2XVT-7QRA"] = true,
+    -- ✅ YOUR KEY ADDED HERE
     ["NEXUS-9MZC-4WKP-6HQA"] = true
 }
 local DISCORD_LINK = "https://discord.gg/zK4vJ8TU6"
+local LOOTLINK_LINK = "https://loot-link.com/s?JPRhtIG6"
 
--- 🎨 THEME / EXACTLY ORIGINAL
+-- 🎨 UI THEME SETTINGS
 local THEME = {
     LoadBg = Color3.fromRGB(60, 18, 32),
     MainBg = Color3.fromRGB(15, 13, 25),
@@ -161,13 +140,14 @@ local TWEEN_FAST = TweenInfo.new(0.25, Enum.EasingStyle.Quad)
 local TWEEN_SMOOTH = TweenInfo.new(0.7, Enum.EasingStyle.Quad)
 local TWEEN_POPUP = TweenInfo.new(0.35, Enum.EasingStyle.Back)
 
+-- 🔲 ROUND CORNER HELPER
 local function Round(obj, radius)
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, radius)
     corner.Parent = obj
 end
 
--- ⏳ LOADING SCREEN / NO CHANGES
+-- ⏳ LOADING SCREEN
 local function ShowLoading()
     local LoadGui = Instance.new("ScreenGui", PlayerGui)
     LoadGui.Name = "Nexus_Loading"
@@ -215,7 +195,7 @@ local function ShowLoading()
     LoadGui:Destroy()
 end
 
--- 🧹 HELPERS
+-- 🧹 CLEANUP & LIGHTING HELPERS
 local function ClearAllLighting()
     RunService:UnbindFromRenderStep("SkyLoop")
     for _, child in pairs(Lighting:GetChildren()) do
@@ -228,7 +208,7 @@ local function SmoothSetLighting(props)
     TweenService:Create(Lighting, TWEEN_SMOOTH, props):Play()
 end
 
--- ⚡ GRAPHICS: UPDATED NIGHT = SUPER DARK + DEEP SKY
+-- 💡 GRAPHICS / SHADERS
 local function ShaderClassic()
     ClearAllLighting()
     SmoothSetLighting({
@@ -282,31 +262,23 @@ local function ShaderBright()
     Lighting.GlobalShadows=false
 end
 
--- ✅ UPDATED NIGHT: EXTREMELY DARK + DEEP SPACE-LIKE SKY
 local function ShaderNight()
     ClearAllLighting()
     SmoothSetLighting({
-        Ambient = Color3.fromRGB(12, 12, 28), -- Very dark blue-gray
-        Brightness = 0.22, -- Extremely dim
-        ExposureCompensation = -0.65, -- Extra darken
-        FogEnd = 6500, -- Short fog / deep atmosphere
-        FogColor = Color3.fromRGB(5, 5, 12),
-        ColorShift_Top = Color3.fromRGB(0, 0, 5), -- Almost black sky
-        ColorShift_Bottom = Color3.fromRGB(8, 8, 20)
+        Ambient = Color3.fromRGB(12, 12, 28), Brightness = 0.22, ExposureCompensation = -0.65,
+        FogEnd = 6500, FogColor = Color3.fromRGB(5, 5, 12),
+        ColorShift_Top = Color3.fromRGB(0, 0, 5), ColorShift_Bottom = Color3.fromRGB(8, 8, 20)
     })
-    Lighting.GlobalShadows = true
-    Lighting.ClockTime = 0.1 -- True midnight hour
+    Lighting.GlobalShadows = true; Lighting.ClockTime = 0.1
     
-    -- ✅ DEEP DARK SKYBOX / NO BRIGHTNESS
     local NightSky = Instance.new("Sky", Lighting)
-    NightSky.Name = "DeepNightSky"
-    NightSky.SkyboxGradient = true
-    NightSky.TopColor = Color3.fromRGB(0, 0, 4) -- Near-black top
+    NightSky.Name = "DeepNightSky"; NightSky.SkyboxGradient = true
+    NightSky.TopColor = Color3.fromRGB(0, 0, 4)
     NightSky.MidColor = Color3.fromRGB(6, 6, 16)
     NightSky.BottomColor = Color3.fromRGB(10, 10, 28)
 end
 
--- 🖥️ MAIN INTERFACE / EXACT COPY / NO CHANGES
+-- 🖥️ MAIN GRAPHICS MENU
 function LoadMainInterface()
     local HubUI = Instance.new("ScreenGui", PlayerGui)
     HubUI.Name = "Nexus_MainHub"
@@ -350,12 +322,10 @@ function LoadMainInterface()
         Btn.Text=opt[1]; Btn.TextColor3=THEME.Text; Btn.Font=Enum.Font.GothamSemibold; Btn.TextSize=19
         Round(Btn,10)
 
-        Btn.MouseEnter:Connect(function()
-            TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play()
-        end)
-        Btn.MouseLeave:Connect(function()
-            local back = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg
-            TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=back}):Play()
+        Btn.MouseEnter:Connect(function() TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play() end)
+        Btn.MouseLeave:Connect(function() 
+            local back = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg 
+            TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=back}):Play() 
         end)
         Btn.MouseButton1Click:Connect(opt[2])
     end
@@ -368,7 +338,7 @@ function LoadMainInterface()
     CloseBtn.MouseButton1Click:Connect(function() HubUI:Destroy() RunService:UnbindFromRenderStep("SkyLoop") end)
 end
 
--- 🔑 KEY UI / EXACT ORIGINAL / NO GHOST TEXT
+-- 🔑 KEY AUTHORIZATION PANEL
 local function RequestKeyEntry()
     local KeyGui = Instance.new("ScreenGui", PlayerGui)
     KeyGui.Name = "Nexus_KeyUI"
@@ -422,30 +392,50 @@ local function RequestKeyEntry()
     Result.Font = Enum.Font.GothamSemibold
     Result.TextSize = 14
 
+    local btnW = 0.31
+    local spacing = 0.015
+
     local VerifyBtn = Instance.new("TextButton", Popup)
-    VerifyBtn.Size = UDim2.new(0.48, -5, 0, 42)
+    VerifyBtn.Size = UDim2.new(btnW, -2, 0, 40)
     VerifyBtn.Position = UDim2.new(0, 15, 0.72, 0)
     VerifyBtn.BackgroundColor3 = THEME.Accent
-    VerifyBtn.Text = "✅ VERIFY KEY"
+    VerifyBtn.Text = "✅ VERIFY"
     VerifyBtn.TextColor3 = THEME.Text
     VerifyBtn.Font = Enum.Font.GothamBold
-    VerifyBtn.TextSize = 15
+    VerifyBtn.TextSize = 14
     Round(VerifyBtn, 10)
 
     local GetKeyBtn = Instance.new("TextButton", Popup)
     GetKeyBtn.Size = VerifyBtn.Size
-    GetKeyBtn.Position = UDim2.new(0.52, 5, 0.72, 0)
+    GetKeyBtn.Position = UDim2.new(btnW + spacing, 15, 0.72, 0)
     GetKeyBtn.BackgroundColor3 = THEME.BtnBg
-    GetKeyBtn.Text = "🔑 GET KEY"
+    GetKeyBtn.Text = "🔑 KEY"
     GetKeyBtn.TextColor3 = THEME.Text
     GetKeyBtn.Font = Enum.Font.GothamBold
-    GetKeyBtn.TextSize = 15
+    GetKeyBtn.TextSize = 14
     Round(GetKeyBtn, 10)
 
+    local LootBtn = Instance.new("TextButton", Popup)
+    LootBtn.Size = VerifyBtn.Size
+    LootBtn.Position = UDim2.new((btnW+spacing)*2, 15, 0.72, 0)
+    LootBtn.BackgroundColor3 = THEME.BtnBg
+    LootBtn.Text = "💰 LINKS"
+    LootBtn.TextColor3 = THEME.Text
+    LootBtn.Font = Enum.Font.GothamBold
+    LootBtn.TextSize = 14
+    Round(LootBtn, 10)
+    
+    LootBtn.MouseButton1Click:Connect(function()
+        setclipboard(LOOTLINK_LINK)
+        pcall(function() StarterGui:SetCore("SendNotification", {
+            Title = "✅ Copied!", Text = "LootLabs link saved!", Duration=3}) end)
+        local orig = LootBtn.BackgroundColor3
+        TweenService:Create(LootBtn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play()
+        task.wait(0.2); TweenService:Create(LootBtn,TWEEN_FAST,{BackgroundColor3=orig}):Play()
+    end)
+
     KeyGui.Parent = PlayerGui
-    Popup.Visible = false
-    task.wait(0.1)
-    Popup.Visible = true
+    Popup.Visible = false; task.wait(0.1); Popup.Visible = true
     TweenService:Create(Popup, TWEEN_POPUP, {Transparency=0}):Play()
 
     VerifyBtn.MouseButton1Click:Connect(function()
@@ -454,11 +444,9 @@ local function RequestKeyEntry()
             Result.Text = "✅ SUCCESS — Activated!"
             Result.TextColor3 = Color3.fromRGB(85, 255, 135)
             VerifyBtn.Text = "Loading..."
-            task.wait(1.2)
-            KeyGui:Destroy()
-            LoadMainInterface()
+            task.wait(1.2); KeyGui:Destroy(); LoadMainInterface()
         else
-            Result.Text = "❌ Invalid or Expired Key"
+            Result.Text = "❌ Invalid Key"
             Result.TextColor3 = Color3.fromRGB(255, 80, 80)
             InputBox.Position -= UDim2.new(0,4,0,0)
             task.wait(0.06) InputBox.Position += UDim2.new(0,8,0,0) task.wait(0.06) InputBox.Position -= UDim2.new(0,4,0,0)
@@ -469,12 +457,11 @@ local function RequestKeyEntry()
         setclipboard(DISCORD_LINK)
         pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Discord link saved!", Duration=3}) end)
         local orig = GetKeyBtn.BackgroundColor3
-        TweenService:Create(GetKeyBtn, TWEEN_FAST, {BackgroundColor3=THEME.Accent}):Play()
-        task.wait(0.2)
-        TweenService:Create(GetKeyBtn, TWEEN_FAST, {BackgroundColor3=orig}):Play()
+        TweenService:Create(GetKeyBtn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play()
+        task.wait(0.2); TweenService:Create(GetKeyBtn,TWEEN_FAST,{BackgroundColor3=orig}):Play()
     end)
 end
 
--- 🚀 RUN / FLOW PRESERVED
+-- 🚀 START EXECUTION
 ShowLoading()
 RequestKeyEntry()
