@@ -1,4 +1,3 @@
--- ✅ NEXUS HUB: SHORTENED KEY LIST (50% SMALLER) / FULLY FUNCTIONAL
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local Lighting = game:GetService("Lighting")
@@ -8,7 +7,7 @@ local SoundService = game:GetService("SoundService")
 local plr = Players.LocalPlayer
 local PlayerGui = plr:WaitForChild("PlayerGui", 15)
 
--- 🔑 SHORTER KEY LIST (EASY TO COPY - ALL WORKING)
+-- 🔑 SHORTENED KEY LIST
 local VALID_KEYS = {
     ["NEXUS-102-1020-789-PREMIUM"] = true,
     ["NEXUS-7KQ2-X9PM-4VLA"] = true,
@@ -37,9 +36,14 @@ local VALID_KEYS = {
     ["NEXUS-9MZC-4WKP-6HQA"] = true
 }
 
--- 🔗 LINKS
+-- 🔗 LINKS POOL + DISCORD
 local DISCORD_LINK = "https://discord.gg/zK4vJ8TU6"
-local LOOTLINK_LINK = "https://loot-link.com/s?JPRhtIG6"
+local LOOT_LINKS = {
+    "https://lootdest.org/s?efYFPxMt",
+    "https://lootdest.org/s?wlEkMgwl",
+    "https://loot-link.com/s?cc9w9VAl",
+    "https://loot-link.com/s?JPRhtIG6"
+}
 
 -- 🎨 UI THEME
 local THEME = {
@@ -58,6 +62,14 @@ local THEME = {
 local TWEEN_FAST = TweenInfo.new(0.25, Enum.EasingStyle.Quad)
 local TWEEN_SMOOTH = TweenInfo.new(0.7, Enum.EasingStyle.Quad)
 local TWEEN_POPUP = TweenInfo.new(0.35, Enum.EasingStyle.Back)
+
+-- ✅ PERMANENT FIX: RELIABLE RANDOM LINK FUNCTION
+local function GetRandomLink()
+    -- Siguradong bagong random sa bawat click
+    local rng = Random.new(tick() * math.random(100000, 999999))
+    local index = rng:NextInteger(1, #LOOT_LINKS)
+    return LOOT_LINKS[index]
+end
 
 -- 🔲 ROUND CORNER
 local function Round(obj, radius)
@@ -411,9 +423,17 @@ local function RequestKeyEntry()
     LootBtn.TextSize = 14
     Round(LootBtn, 10)
     
+    -- ✅ FIXED: Gumagamit ng sariling Random bawat click, hindi mauulit pareho
     LootBtn.MouseButton1Click:Connect(function()
-        setclipboard(LOOTLINK_LINK)
-        pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Link saved!", Duration=3}) end)
+        local link = GetRandomLink()
+        setclipboard(link)
+        pcall(function() 
+            StarterGui:SetCore("SendNotification", {
+                Title = "✅ LINK COPIED!",
+                Text = string.sub(link, 1, 40) .. "...",
+                Duration = 2.75
+            }) 
+        end)
     end)
 
     KeyGui.Parent = PlayerGui
@@ -431,7 +451,11 @@ local function RequestKeyEntry()
             Result.TextColor3 = Color3.fromRGB(255, 80, 80)
         end
     end)
-    GetKeyBtn.MouseButton1Click:Connect(function() setclipboard(DISCORD_LINK); pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Discord link!", Duration=3}) end) end)
+    
+    GetKeyBtn.MouseButton1Click:Connect(function() 
+        setclipboard(DISCORD_LINK) 
+        pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Discord invite copied!", Duration=3}) end) 
+    end)
 end
 
 -- 🚀 START
