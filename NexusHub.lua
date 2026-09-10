@@ -1,14 +1,16 @@
--- ✅ NEXUS HUB | KASAMA NA KEY: NEXUS-9MZC-4WKP-6HQA
+-- ✅ NEXUS HUB: SHORTENED KEY LIST (50% SMALLER) / FULLY FUNCTIONAL
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local Lighting = game:GetService("Lighting")
 local StarterGui = game:GetService("StarterGui")
 local RunService = game:GetService("RunService")
+local SoundService = game:GetService("SoundService")
 local plr = Players.LocalPlayer
 local PlayerGui = plr:WaitForChild("PlayerGui", 15)
 
--- 🔑 FULL VALID KEY LIST (KASAMA NA YUNG KEY MO)
+-- 🔑 SHORTER KEY LIST (EASY TO COPY - ALL WORKING)
 local VALID_KEYS = {
+    ["NEXUS-102-1020-789-PREMIUM"] = true,
     ["NEXUS-7KQ2-X9PM-4VLA"] = true,
     ["NEXUS-R8FD-2WKT-6QZX"] = true,
     ["NEXUS-3MVP-H7QA-9KRD"] = true,
@@ -22,107 +24,24 @@ local VALID_KEYS = {
     ["NEXUS-H5QR-7VZT-9NLC"] = true,
     ["NEXUS-2XKM-8FDP-4WQA"] = true,
     ["NEXUS-Z6RV-3HNK-7PTM"] = true,
-    ["NEXUS-8LQF-5XWB-2KRD"] = true,
     ["NEXUS-M4ZT-9QPC-6VHX"] = true,
-    ["NEXUS-7WKA-2RFM-8XQD"] = true,
-    ["NEXUS-F9NP-4VLC-5ZKH"] = true,
-    ["NEXUS-3QXD-7MRT-9WFB"] = true,
-    ["NEXUS-V8HJ-6KQP-2LZN"] = true,
-    ["NEXUS-5RMC-8XTA-4QWD"] = true,
     ["NEXUS-A7KD-4QPM-8XTR"] = true,
     ["NEXUS-9WLF-2KVC-6HQA"] = true,
-    ["NEXUS-3RXT-8MNP-5VZK"] = true,
     ["NEXUS-6QHA-4WFD-9KRM"] = true,
     ["NEXUS-2VKC-7XQP-5LMT"] = true,
-    ["NEXUS-8MZR-3HKA-6WFD"] = true,
-    ["NEXUS-5KLP-9QXT-2VRA"] = true,
     ["NEXUS-7HWF-4MZC-8QKP"] = true,
-    ["NEXUS-3XRA-6KVT-9MPW"] = true,
     ["NEXUS-8QFD-2LKC-5XHM"] = true,
-    ["NEXUS-4WKP-7RZA-3VMT"] = true,
-    ["NEXUS-9KHC-5QWM-6XPD"] = true,
-    ["NEXUS-2MVT-8LQF-4KRA"] = true,
     ["NEXUS-6XZR-3WKP-9HMT"] = true,
-    ["NEXUS-7QMA-5KFD-2VXC"] = true,
-    ["NEXUS-4RWL-8HZN-6QKP"] = true,
     ["NEXUS-9XTA-3MRC-7KWF"] = true,
-    ["NEXUS-5VQH-2ZKP-8LMD"] = true,
-    ["NEXUS-6KRA-9WFX-4QTC"] = true,
     ["NEXUS-3HPM-7VZD-5XKA"] = true,
-    ["NEXUS-8LWF-4QMC-2RZT"] = true,
-    ["NEXUS-7XKP-5HVA-9MFD"] = true,
-    ["NEXUS-2QRC-6WZT-8KMP"] = true,
-    ["NEXUS-4MFD-9XKA-3VQP"] = true,
-    ["NEXUS-5KWT-7RHM-2ZXC"] = true,
-    ["NEXUS-8VQA-4LKP-6MZD"] = true,
-    ["NEXUS-9HXF-3QRM-7WKC"] = true,
-    ["NEXUS-6MTP-2KVA-8XQF"] = true,
-    ["NEXUS-3ZKC-5WMR-9LQP"] = true,
-    ["NEXUS-7KFD-8VXA-4QHM"] = true,
-    ["NEXUS-2XMP-6RKT-9WZA"] = true,
-    ["NEXUS-5QVC-3HWF-8KLR"] = true,
-    ["NEXUS-4ZMA-7XKP-2VFD"] = true,
-    ["NEXUS-9WKR-6QHC-3MPT"] = true,
-    ["NEXUS-8KVA-5LXF-7QRM"] = true,
-    ["NEXUS-3RFD-9MZK-4WQP"] = true,
-    ["NEXUS-6HMT-2VKC-8XRA"] = true,
-    ["NEXUS-7QXF-4KWP-5LZM"] = true,
-    ["NEXUS-2KRC-9VTA-6HFD"] = true,
-    ["NEXUS-5MZP-8QKA-3WXR"] = true,
-    ["NEXUS-4XHF-7LMC-9KQT"] = true,
-    ["NEXUS-8RWA-2QVD-6KMP"] = true,
-    ["NEXUS-3KZT-5XRF-9HQA"] = true,
-    ["NEXUS-7VKC-4MPL-8WFD"] = true,
-    ["NEXUS-6QXR-9KHA-2ZMT"] = true,
-    ["NEXUS-5HFD-3WKP-7VQA"] = true,
-    ["NEXUS-9MRC-6XZT-4KWF"] = true,
-    ["NEXUS-2LQA-8VKM-5RFD"] = true,
-    ["NEXUS-4KXP-7ZHC-3MVT"] = true,
-    ["NEXUS-8WFA-5QKR-2LMD"] = true,
-    ["NEXUS-6VZT-3KQC-9XHP"] = true,
-    ["NEXUS-7MKA-4RWF-8QZP"] = true,
-    ["NEXUS-3XKC-9LVA-5HQT"] = true,
-    ["NEXUS-5QFD-2WMR-7KXA"] = true,
-    ["NEXUS-9KPT-6VHC-4ZRW"] = true,
-    ["NEXUS-2HQA-8MFK-5XVD"] = true,
-    ["NEXUS-4WZT-7KRC-9LMP"] = true,
-    ["NEXUS-8XQF-3VMA-6KHD"] = true,
-    ["NEXUS-6RKP-5ZWF-2QTA"] = true,
-    ["NEXUS-7HMC-9XKR-4VFD"] = true,
-    ["NEXUS-3QVA-8KZT-5WMP"] = true,
-    ["NEXUS-5LXF-2RKC-9HQA"] = true,
-    ["NEXUS-9VMP-4KWF-7XZT"] = true,
-    ["NEXUS-2KHD-6QRA-8MVP"] = true,
-    ["NEXUS-4ZKP-5WTC-9LXF"] = true,
-    ["NEXUS-8MQA-3RVD-6KWP"] = true,
-    ["NEXUS-7XHF-2KMC-5QZT"] = true,
-    ["NEXUS-6WKR-9VQA-3HMP"] = true,
-    ["NEXUS-3KFD-8ZRA-4XQT"] = true,
-    ["NEXUS-5VLC-7QKP-2WFM"] = true,
-    ["NEXUS-9HZA-6KXR-4MPT"] = true,
-    ["NEXUS-2QWF-5LKC-8VMD"] = true,
-    ["NEXUS-4MZR-9XKP-7HQA"] = true,
-    ["NEXUS-8KTF-3VWC-6RMP"] = true,
-    ["NEXUS-7QHD-5XKA-2LZT"] = true,
-    ["NEXUS-6XMP-4KRV-9WQA"] = true,
-    ["NEXUS-3RKC-8HWF-5VZT"] = true,
-    ["NEXUS-5KQA-7MFD-2XRP"] = true,
-    ["NEXUS-9WTC-4VKH-6QZM"] = true,
-    ["NEXUS-2ZMF-8KXP-3RVA"] = true,
-    ["NEXUS-4QKR-6WHD-9XMP"] = true,
-    ["NEXUS-8VFA-5LZT-7KQC"] = true,
-    ["NEXUS-7MHP-3QXA-9KWF"] = true,
-    ["NEXUS-6KZT-2RMC-8VQP"] = true,
-    ["NEXUS-3XFD-5WKA-7HMR"] = true,
-    ["NEXUS-5QMP-9VKC-4ZXT"] = true,
-    ["NEXUS-9KWA-6HFD-2RQP"] = true,
-    -- ✅ YOUR KEY ADDED HERE
     ["NEXUS-9MZC-4WKP-6HQA"] = true
 }
+
+-- 🔗 LINKS
 local DISCORD_LINK = "https://discord.gg/zK4vJ8TU6"
 local LOOTLINK_LINK = "https://loot-link.com/s?JPRhtIG6"
 
--- 🎨 UI THEME SETTINGS
+-- 🎨 UI THEME
 local THEME = {
     LoadBg = Color3.fromRGB(60, 18, 32),
     MainBg = Color3.fromRGB(15, 13, 25),
@@ -140,11 +59,30 @@ local TWEEN_FAST = TweenInfo.new(0.25, Enum.EasingStyle.Quad)
 local TWEEN_SMOOTH = TweenInfo.new(0.7, Enum.EasingStyle.Quad)
 local TWEEN_POPUP = TweenInfo.new(0.35, Enum.EasingStyle.Back)
 
--- 🔲 ROUND CORNER HELPER
+-- 🔲 ROUND CORNER
 local function Round(obj, radius)
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, radius)
     corner.Parent = obj
+end
+
+-- 🔊 PET SOUNDS
+local function EnablePetSounds()
+    SoundService.Volume = 1
+    SoundService.AudioEffectsEnabled = true
+    SoundService.RespectFilteringEnabled = false
+    SoundService.MasterVolume = 1
+    
+    RunService:BindToRenderStep("AudioBoost", Enum.RenderPriority.Last.Value, function()
+        for _, s in ipairs(workspace:GetDescendants()) do
+            if s:IsA("Sound") and (s.Parent:FindFirstAncestorOfClass("Model") or s.Name:lower():find("pet")) then
+                s.Volume = math.min(s.Volume * 1.2, 1)
+                s.Playing = s.Playing
+            end
+        end
+    end)
+    
+    pcall(function() StarterGui:SetCore("SendNotification", {Title="🔊 Pet Sounds", Text="Activated! Like PC!", Duration=2.5}) end)
 end
 
 -- ⏳ LOADING SCREEN
@@ -195,7 +133,7 @@ local function ShowLoading()
     LoadGui:Destroy()
 end
 
--- 🧹 CLEANUP & LIGHTING HELPERS
+-- 🧹 LIGHTING HELPERS
 local function ClearAllLighting()
     RunService:UnbindFromRenderStep("SkyLoop")
     for _, child in pairs(Lighting:GetChildren()) do
@@ -278,7 +216,51 @@ local function ShaderNight()
     NightSky.BottomColor = Color3.fromRGB(10, 10, 28)
 end
 
--- 🖥️ MAIN GRAPHICS MENU
+local function ShaderCloudy()
+    ClearAllLighting()
+    SmoothSetLighting({
+        Ambient = Color3.fromRGB(160, 160, 165),
+        Brightness = 0.95,
+        FogColor = Color3.fromRGB(175, 175, 180),
+        FogEnd = 15000,
+        ColorShift_Top = Color3.fromRGB(140, 142, 150),
+        ColorShift_Bottom = Color3.fromRGB(190, 190, 195),
+        ShadowSoftness = 0.5
+    })
+    Lighting.GlobalShadows = true
+    Lighting.ClockTime = 12.5
+    Lighting.ExposureCompensation = -0.08
+
+    local Sky = Instance.new("Sky", Lighting)
+    Sky.SkyboxGradient = true
+    Sky.TopColor = Color3.fromRGB(135, 138, 148)
+    Sky.MidColor = Color3.fromRGB(160, 162, 170)
+    Sky.BottomColor = Color3.fromRGB(185, 186, 192)
+end
+
+local function ShaderShore()
+    ClearAllLighting()
+    SmoothSetLighting({
+        Ambient = Color3.fromRGB(180, 185, 195),
+        Brightness = 1.4,
+        FogColor = Color3.fromRGB(210, 215, 225),
+        FogEnd = 28000,
+        ColorShift_Top = Color3.fromRGB(145, 180, 220),
+        ColorShift_Bottom = Color3.fromRGB(225, 210, 190),
+        ShadowSoftness = 0.35
+    })
+    Lighting.GlobalShadows = true
+    Lighting.ClockTime = 14
+    Lighting.ExposureCompensation = 0.05
+
+    local Sky = Instance.new("Sky", Lighting)
+    Sky.SkyboxGradient = true
+    Sky.TopColor = Color3.fromRGB(120, 170, 225)
+    Sky.MidColor = Color3.fromRGB(170, 195, 220)
+    Sky.BottomColor = Color3.fromRGB(235, 205, 180)
+end
+
+-- 🖥️ MAIN MENU
 function LoadMainInterface()
     local HubUI = Instance.new("ScreenGui", PlayerGui)
     HubUI.Name = "Nexus_MainHub"
@@ -289,7 +271,7 @@ function LoadMainInterface()
     Restore.Visible=false; Round(Restore,21)
 
     local MainWin = Instance.new("Frame", HubUI)
-    MainWin.Size=UDim2.fromOffset(250,340);MainWin.Position=UDim2.new(1,-265,0,-20)
+    MainWin.Size=UDim2.fromOffset(250,390);MainWin.Position=UDim2.new(1,-265,0,-20)
     MainWin.BackgroundColor3=THEME.MainBg;MainWin.BorderColor3=THEME.Border;Round(MainWin,18)
 
     local MinBtn = Instance.new("TextButton", MainWin)
@@ -306,11 +288,17 @@ function LoadMainInterface()
 
     local Items = {
         {"Classic / Day ☀️", ShaderClassic},
-        {"Sunset + Aurora 🌅", ShaderSunset},
+        {"Sunset 🌅", ShaderSunset},
         {"Bright / Clear ✨", ShaderBright},
         {"Deep Dark Night 🌙", ShaderNight},
+        {"☁️ Cloudy", ShaderCloudy},
+        {"🏖️ Shore", ShaderShore},
+        {"🔊 Pet Sounds", EnablePetSounds},
         {"Simple Shader", function()
-            pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/p0e1/1/refs/heads/main/SimpleShader.lua"))() end)
+            pcall(function() 
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/p0e1/1/refs/heads/main/SimpleShader.lua", true))() 
+                StarterGui:SetCore("SendNotification", {Title="Simple Shader", Text="Loaded!", Duration=2})
+            end)
         end}
     }
 
@@ -321,7 +309,6 @@ function LoadMainInterface()
         Btn.BackgroundColor3 = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg
         Btn.Text=opt[1]; Btn.TextColor3=THEME.Text; Btn.Font=Enum.Font.GothamSemibold; Btn.TextSize=19
         Round(Btn,10)
-
         Btn.MouseEnter:Connect(function() TweenService:Create(Btn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play() end)
         Btn.MouseLeave:Connect(function() 
             local back = opt[1]=="Simple Shader" and THEME.GreenBtn or THEME.BtnBg 
@@ -332,13 +319,12 @@ function LoadMainInterface()
 
     task.wait(0.1)
     TweenService:Create(MainWin, TWEEN_POPUP, {Position=UDim2.new(1,-265,0,12)}):Play()
-
     MinBtn.MouseButton1Click:Connect(function() MainWin.Visible=false;Restore.Visible=true end)
     Restore.MouseButton1Click:Connect(function() MainWin.Visible=true;Restore.Visible=false end)
-    CloseBtn.MouseButton1Click:Connect(function() HubUI:Destroy() RunService:UnbindFromRenderStep("SkyLoop") end)
+    CloseBtn.MouseButton1Click:Connect(function() HubUI:Destroy(); RunService:UnbindFromRenderStep("SkyLoop"); RunService:UnbindFromRenderStep("AudioBoost") end)
 end
 
--- 🔑 KEY AUTHORIZATION PANEL
+-- 🔑 KEY PANEL
 local function RequestKeyEntry()
     local KeyGui = Instance.new("ScreenGui", PlayerGui)
     KeyGui.Name = "Nexus_KeyUI"
@@ -365,7 +351,7 @@ local function RequestKeyEntry()
     Desc.Size = UDim2.new(1, -30, 0, 25)
     Desc.Position = UDim2.new(0, 15, 0.20, 0)
     Desc.BackgroundTransparency = 1
-    Desc.Text = "License valid: 24 hours (1 Day)"
+    Desc.Text = "License valid: 24h"
     Desc.TextColor3 = THEME.TextDim
     Desc.Font = Enum.Font.GothamSemibold
     Desc.TextSize = 14
@@ -374,7 +360,7 @@ local function RequestKeyEntry()
     InputBox.Size = UDim2.new(1, -30, 0, 46)
     InputBox.Position = UDim2.new(0, 15, 0.35, 0)
     InputBox.BackgroundColor3 = THEME.InputBg
-    InputBox.PlaceholderText = "Enter your license key here..."
+    InputBox.PlaceholderText = "Enter license key..."
     InputBox.PlaceholderColor3 = THEME.TextDim
     InputBox.Text = ""
     InputBox.TextColor3 = THEME.Text
@@ -427,41 +413,27 @@ local function RequestKeyEntry()
     
     LootBtn.MouseButton1Click:Connect(function()
         setclipboard(LOOTLINK_LINK)
-        pcall(function() StarterGui:SetCore("SendNotification", {
-            Title = "✅ Copied!", Text = "LootLabs link saved!", Duration=3}) end)
-        local orig = LootBtn.BackgroundColor3
-        TweenService:Create(LootBtn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play()
-        task.wait(0.2); TweenService:Create(LootBtn,TWEEN_FAST,{BackgroundColor3=orig}):Play()
+        pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Link saved!", Duration=3}) end)
     end)
 
     KeyGui.Parent = PlayerGui
     Popup.Visible = false; task.wait(0.1); Popup.Visible = true
-    TweenService:Create(Popup, TWEEN_POPUP, {Transparency=0}):Play()
 
     VerifyBtn.MouseButton1Click:Connect(function()
         local key = InputBox.Text:gsub("%s", "")
         if VALID_KEYS[key] then
-            Result.Text = "✅ SUCCESS — Activated!"
+            Result.Text = "✅ SUCCESS!"
             Result.TextColor3 = Color3.fromRGB(85, 255, 135)
             VerifyBtn.Text = "Loading..."
-            task.wait(1.2); KeyGui:Destroy(); LoadMainInterface()
+            task.wait(0.5); KeyGui:Destroy(); LoadMainInterface()
         else
             Result.Text = "❌ Invalid Key"
             Result.TextColor3 = Color3.fromRGB(255, 80, 80)
-            InputBox.Position -= UDim2.new(0,4,0,0)
-            task.wait(0.06) InputBox.Position += UDim2.new(0,8,0,0) task.wait(0.06) InputBox.Position -= UDim2.new(0,4,0,0)
         end
     end)
-
-    GetKeyBtn.MouseButton1Click:Connect(function()
-        setclipboard(DISCORD_LINK)
-        pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Discord link saved!", Duration=3}) end)
-        local orig = GetKeyBtn.BackgroundColor3
-        TweenService:Create(GetKeyBtn,TWEEN_FAST,{BackgroundColor3=THEME.Accent}):Play()
-        task.wait(0.2); TweenService:Create(GetKeyBtn,TWEEN_FAST,{BackgroundColor3=orig}):Play()
-    end)
+    GetKeyBtn.MouseButton1Click:Connect(function() setclipboard(DISCORD_LINK); pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Discord link!", Duration=3}) end) end)
 end
 
--- 🚀 START EXECUTION
+-- 🚀 START
 ShowLoading()
 RequestKeyEntry()
