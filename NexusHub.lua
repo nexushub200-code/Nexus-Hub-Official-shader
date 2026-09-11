@@ -7,37 +7,8 @@ local SoundService = game:GetService("SoundService")
 local plr = Players.LocalPlayer
 local PlayerGui = plr:WaitForChild("PlayerGui", 15)
 
--- 🔑 SHORTENED KEY LIST
-local VALID_KEYS = {
-    ["NEXUS-102-1020-789-PREMIUM"] = true,
-    ["NEXUS-7KQ2-X9PM-4VLA"] = true,
-    ["NEXUS-R8FD-2WKT-6QZX"] = true,
-    ["NEXUS-3MVP-H7QA-9KRD"] = true,
-    ["NEXUS-X5LT-8NWF-2JGC"] = true,
-    ["NEXUS-Q9BZ-4RHM-7XPK"] = true,
-    ["NEXUS-6VJD-P3QA-8TWN"] = true,
-    ["NEXUS-K2XF-9LRC-5MVB"] = true,
-    ["NEXUS-W7QH-3ZKP-6FDA"] = true,
-    ["NEXUS-4TMC-X8VN-2RQL"] = true,
-    ["NEXUS-9PWA-6KJD-3XHF"] = true,
-    ["NEXUS-H5QR-7VZT-9NLC"] = true,
-    ["NEXUS-2XKM-8FDP-4WQA"] = true,
-    ["NEXUS-Z6RV-3HNK-7PTM"] = true,
-    ["NEXUS-M4ZT-9QPC-6VHX"] = true,
-    ["NEXUS-A7KD-4QPM-8XTR"] = true,
-    ["NEXUS-9WLF-2KVC-6HQA"] = true,
-    ["NEXUS-6QHA-4WFD-9KRM"] = true,
-    ["NEXUS-2VKC-7XQP-5LMT"] = true,
-    ["NEXUS-7HWF-4MZC-8QKP"] = true,
-    ["NEXUS-8QFD-2LKC-5XHM"] = true,
-    ["NEXUS-6XZR-3WKP-9HMT"] = true,
-    ["NEXUS-9XTA-3MRC-7KWF"] = true,
-    ["NEXUS-3HPM-7VZD-5XKA"] = true,
-    ["NEXUS-9MZC-4WKP-6HQA"] = true
-}
-
--- 🔗 LINKS POOL + DISCORD
-local DISCORD_LINK = "https://discord.gg/zK4vJ8TU6"
+-- 🔗 LINKS
+local DISCORD_LINK = "https://discord.gg/RBU4fNs8d" -- ✅ NEW LINK
 local LOOT_LINKS = {
     "https://lootdest.org/s?efYFPxMt",
     "https://lootdest.org/s?wlEkMgwl",
@@ -45,12 +16,10 @@ local LOOT_LINKS = {
     "https://loot-link.com/s?JPRhtIG6"
 }
 
--- 🎨 UI THEME
+-- 🎨 THEME
 local THEME = {
     LoadBg = Color3.fromRGB(60, 18, 32),
     MainBg = Color3.fromRGB(15, 13, 25),
-    KeyBg = Color3.fromRGB(12, 12, 20),
-    InputBg = Color3.fromRGB(22, 20, 35),
     BtnBg = Color3.fromRGB(30, 26, 48),
     Accent = Color3.fromRGB(160, 90, 255),
     GreenBtn = Color3.fromRGB(45, 180, 80),
@@ -60,18 +29,15 @@ local THEME = {
 }
 
 local TWEEN_FAST = TweenInfo.new(0.25, Enum.EasingStyle.Quad)
-local TWEEN_SMOOTH = TweenInfo.new(0.7, Enum.EasingStyle.Quad)
-local TWEEN_POPUP = TweenInfo.new(0.35, Enum.EasingStyle.Back)
+local TWEEN_SMOOTH = TweenInfo.new(0.4, Enum.EasingStyle.Quad)
+local TWEEN_POP = TweenInfo.new(0.35, Enum.EasingStyle.Back)
 
--- ✅ PERMANENT FIX: RELIABLE RANDOM LINK FUNCTION
 local function GetRandomLink()
-    -- Siguradong bagong random sa bawat click
     local rng = Random.new(tick() * math.random(100000, 999999))
     local index = rng:NextInteger(1, #LOOT_LINKS)
     return LOOT_LINKS[index]
 end
 
--- 🔲 ROUND CORNER
 local function Round(obj, radius)
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, radius)
@@ -110,6 +76,8 @@ local function ShowLoading()
     Box.BorderColor3 = THEME.Border
     Box.BorderSizePixel = 1
     Round(Box, 16)
+    Box.BackgroundTransparency = 1
+    TweenService:Create(Box, TWEEN_POP, {BackgroundTransparency = 0}):Play()
 
     local Status = Instance.new("TextLabel", Box)
     Status.Size = UDim2.new(1, -20, 0.5, 0)
@@ -142,6 +110,8 @@ local function ShowLoading()
     Status.Text = "Initializing Nexus Hub..."
     TweenService:Create(BarFill, Step, {Size=UDim2.new(1,0,1,0)}):Play() task.wait(3)
 
+    TweenService:Create(Box, TWEEN_SMOOTH, {BackgroundTransparency=1}):Play()
+    task.wait(0.4)
     LoadGui:Destroy()
 end
 
@@ -285,6 +255,8 @@ function LoadMainInterface()
     local MainWin = Instance.new("Frame", HubUI)
     MainWin.Size=UDim2.fromOffset(250,390);MainWin.Position=UDim2.new(1,-265,0,-20)
     MainWin.BackgroundColor3=THEME.MainBg;MainWin.BorderColor3=THEME.Border;Round(MainWin,18)
+    MainWin.BackgroundTransparency=1
+    TweenService:Create(MainWin, TWEEN_POP, {Position=UDim2.new(1,-265,0,12), BackgroundTransparency=0}):Play()
 
     local MinBtn = Instance.new("TextButton", MainWin)
     MinBtn.Size=UDim2.fromOffset(30,24);MinBtn.Position=UDim2.new(1,-65,0,6)
@@ -298,6 +270,7 @@ function LoadMainInterface()
     Scroller.Size=UDim2.new(1,-10,1,-40);Scroller.Position=UDim2.new(0,5,0,35)
     Scroller.BackgroundTransparency=1;Scroller.ScrollBarThickness=5;Scroller.AutomaticCanvasSize=Enum.AutomaticSize.Y
 
+    -- ✅ UPDATED LIST: ADDED JOIN DISCORD
     local Items = {
         {"Classic / Day ☀️", ShaderClassic},
         {"Sunset 🌅", ShaderSunset},
@@ -310,6 +283,16 @@ function LoadMainInterface()
             pcall(function() 
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/p0e1/1/refs/heads/main/SimpleShader.lua", true))() 
                 StarterGui:SetCore("SendNotification", {Title="Simple Shader", Text="Loaded!", Duration=2})
+            end)
+        end},
+        {"💬 Join Discord", function() -- ✅ NEW BUTTON
+            setclipboard(DISCORD_LINK)
+            pcall(function() 
+                StarterGui:SetCore("SendNotification", {
+                    Title="✅ Discord Copied!", 
+                    Text=DISCORD_LINK, 
+                    Duration=3
+                }) 
             end)
         end}
     }
@@ -329,135 +312,11 @@ function LoadMainInterface()
         Btn.MouseButton1Click:Connect(opt[2])
     end
 
-    task.wait(0.1)
-    TweenService:Create(MainWin, TWEEN_POPUP, {Position=UDim2.new(1,-265,0,12)}):Play()
     MinBtn.MouseButton1Click:Connect(function() MainWin.Visible=false;Restore.Visible=true end)
     Restore.MouseButton1Click:Connect(function() MainWin.Visible=true;Restore.Visible=false end)
     CloseBtn.MouseButton1Click:Connect(function() HubUI:Destroy(); RunService:UnbindFromRenderStep("SkyLoop"); RunService:UnbindFromRenderStep("AudioBoost") end)
 end
 
--- 🔑 KEY PANEL
-local function RequestKeyEntry()
-    local KeyGui = Instance.new("ScreenGui", PlayerGui)
-    KeyGui.Name = "Nexus_KeyUI"
-    KeyGui.DisplayOrder = 9998
-
-    local Popup = Instance.new("Frame", KeyGui)
-    Popup.Size = UDim2.fromOffset(330, 280)
-    Popup.Position = UDim2.new(0.5, -165, 0.5, -140)
-    Popup.BackgroundColor3 = THEME.KeyBg
-    Popup.BorderColor3 = THEME.Border
-    Popup.BorderSizePixel = 1
-    Round(Popup, 18)
-
-    local Title = Instance.new("TextLabel", Popup)
-    Title.Size = UDim2.new(1, -20, 0, 45)
-    Title.Position = UDim2.new(0, 10, 0, 10)
-    Title.BackgroundTransparency = 1
-    Title.Text = "🔑 Nexus Hub Authorization"
-    Title.TextColor3 = THEME.Accent
-    Title.Font = Enum.Font.GothamBold
-    Title.TextSize = 21
-
-    local Desc = Instance.new("TextLabel", Popup)
-    Desc.Size = UDim2.new(1, -30, 0, 25)
-    Desc.Position = UDim2.new(0, 15, 0.20, 0)
-    Desc.BackgroundTransparency = 1
-    Desc.Text = "License valid: 24h"
-    Desc.TextColor3 = THEME.TextDim
-    Desc.Font = Enum.Font.GothamSemibold
-    Desc.TextSize = 14
-
-    local InputBox = Instance.new("TextBox", Popup)
-    InputBox.Size = UDim2.new(1, -30, 0, 46)
-    InputBox.Position = UDim2.new(0, 15, 0.35, 0)
-    InputBox.BackgroundColor3 = THEME.InputBg
-    InputBox.PlaceholderText = "Enter license key..."
-    InputBox.PlaceholderColor3 = THEME.TextDim
-    InputBox.Text = ""
-    InputBox.TextColor3 = THEME.Text
-    InputBox.Font = Enum.Font.GothamMedium
-    InputBox.TextSize = 16
-    InputBox.ClearTextOnFocus = false
-    InputBox.TextXAlignment = Enum.TextXAlignment.Center
-    Round(InputBox, 12)
-
-    local Result = Instance.new("TextLabel", Popup)
-    Result.Size = UDim2.new(1, -25, 0, 24)
-    Result.Position = UDim2.new(0, 12, 0.55, 0)
-    Result.BackgroundTransparency = 1
-    Result.Text = ""
-    Result.Font = Enum.Font.GothamSemibold
-    Result.TextSize = 14
-
-    local btnW = 0.31
-    local spacing = 0.015
-
-    local VerifyBtn = Instance.new("TextButton", Popup)
-    VerifyBtn.Size = UDim2.new(btnW, -2, 0, 40)
-    VerifyBtn.Position = UDim2.new(0, 15, 0.72, 0)
-    VerifyBtn.BackgroundColor3 = THEME.Accent
-    VerifyBtn.Text = "✅ VERIFY"
-    VerifyBtn.TextColor3 = THEME.Text
-    VerifyBtn.Font = Enum.Font.GothamBold
-    VerifyBtn.TextSize = 14
-    Round(VerifyBtn, 10)
-
-    local GetKeyBtn = Instance.new("TextButton", Popup)
-    GetKeyBtn.Size = VerifyBtn.Size
-    GetKeyBtn.Position = UDim2.new(btnW + spacing, 15, 0.72, 0)
-    GetKeyBtn.BackgroundColor3 = THEME.BtnBg
-    GetKeyBtn.Text = "🔑 KEY"
-    GetKeyBtn.TextColor3 = THEME.Text
-    GetKeyBtn.Font = Enum.Font.GothamBold
-    GetKeyBtn.TextSize = 14
-    Round(GetKeyBtn, 10)
-
-    local LootBtn = Instance.new("TextButton", Popup)
-    LootBtn.Size = VerifyBtn.Size
-    LootBtn.Position = UDim2.new((btnW+spacing)*2, 15, 0.72, 0)
-    LootBtn.BackgroundColor3 = THEME.BtnBg
-    LootBtn.Text = "💰 LINKS"
-    LootBtn.TextColor3 = THEME.Text
-    LootBtn.Font = Enum.Font.GothamBold
-    LootBtn.TextSize = 14
-    Round(LootBtn, 10)
-    
-    -- ✅ FIXED: Gumagamit ng sariling Random bawat click, hindi mauulit pareho
-    LootBtn.MouseButton1Click:Connect(function()
-        local link = GetRandomLink()
-        setclipboard(link)
-        pcall(function() 
-            StarterGui:SetCore("SendNotification", {
-                Title = "✅ LINK COPIED!",
-                Text = string.sub(link, 1, 40) .. "...",
-                Duration = 2.75
-            }) 
-        end)
-    end)
-
-    KeyGui.Parent = PlayerGui
-    Popup.Visible = false; task.wait(0.1); Popup.Visible = true
-
-    VerifyBtn.MouseButton1Click:Connect(function()
-        local key = InputBox.Text:gsub("%s", "")
-        if VALID_KEYS[key] then
-            Result.Text = "✅ SUCCESS!"
-            Result.TextColor3 = Color3.fromRGB(85, 255, 135)
-            VerifyBtn.Text = "Loading..."
-            task.wait(0.5); KeyGui:Destroy(); LoadMainInterface()
-        else
-            Result.Text = "❌ Invalid Key"
-            Result.TextColor3 = Color3.fromRGB(255, 80, 80)
-        end
-    end)
-    
-    GetKeyBtn.MouseButton1Click:Connect(function() 
-        setclipboard(DISCORD_LINK) 
-        pcall(function() StarterGui:SetCore("SendNotification", {Title="✅ Copied!", Text="Discord invite copied!", Duration=3}) end) 
-    end)
-end
-
--- 🚀 START
+-- 🚀 RUN
 ShowLoading()
-RequestKeyEntry()
+LoadMainInterface()
